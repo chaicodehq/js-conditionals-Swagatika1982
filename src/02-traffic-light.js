@@ -23,22 +23,26 @@
  */
 export function getTrafficAction(color) {
   // Your code here
-const Signal = (String(color).toLowerCase()).trim();
+const Signal = String(color).trim().toUpperCase();
   let   Action = "INVALID SIGNAL";
 
   if(typeof(Signal) !== "string") return Action;
 
   switch (Signal){
-    case "green":
+    case "GREEN":
       Action = "GO"
-      case "yellow":
+      break;
+    case "YELLOW":
       Action = "SLOW DOWN"
-      case "red":
+      break;
+    case "RED":
       Action = "STOP"
-      case "flashing red":
+      break;
+    case "FLASHING RED":
       Action = "STOP AND PROCEED WITH CAUTION"
+      break;
 
-      default: 
+    default: 
       Action = "INVALID SIGNAL"
        
   }
