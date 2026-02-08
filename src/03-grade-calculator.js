@@ -26,13 +26,12 @@
  */
 export function calculateGrade(score, hasExtraCredit) {
   // Your code here
-
-    let rewards = 5;
+ let rewards = 5;
   let grade = "INVALID"
 
 
   if (typeof hasExtraCredit === "boolean" && hasExtraCredit) {
-  // hasExtraCredit is boolean and true
+   
     if(score <=(100-rewards))
       score += rewards; 
     }
@@ -54,12 +53,13 @@ export function calculateGrade(score, hasExtraCredit) {
       grade= "D";
       } 
    else if (score >= 0 && score <= 59) {
-      grade= "E";
+      grade= "F";
       }
   else {
       grade= "INVALID";
       }
 
  return (grade);
+
   
 }
