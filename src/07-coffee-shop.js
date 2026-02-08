@@ -32,4 +32,53 @@
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
   // Your code here
+if (typeof size !== "string" || typeof type !== "string") return -1;
+
+  const s = size.trim().toLowerCase();
+  const t = type.trim().toLowerCase();
+
+  let total = 0;
+
+  // Base price by size
+  switch (s) {
+    case "small":
+      total = 3.0;
+      break;
+    case "medium":
+      total = 4.0;
+      break;
+    case "large":
+      total = 5.0;
+      break;
+    default:
+      return -1;
+  }
+
+  // Add-on by type
+  switch (t) {
+    case "regular":
+      total += 0.0;
+      break;
+    case "latte":
+      total += 1.0;
+      break;
+    case "cappuccino":
+      total += 1.5;
+      break;
+    case "mocha":
+      total += 2.0;
+      break;
+    default:
+      return -1;
+  }
+
+  // Optional extras
+  if (extras && typeof extras === "object") {
+    if (extras.whippedCream === true) total += 0.5;
+    if (extras.extraShot === true) total += 0.75;
+  }
+
+  // Round to 2 decimal places and return as number
+  return Number(total.toFixed(2));
+  
 }
