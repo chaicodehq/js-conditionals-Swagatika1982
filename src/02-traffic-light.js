@@ -23,7 +23,7 @@
  */
 export function getTrafficAction(color) {
   // Your code here
-  const Signal = (String(color).toLowerCase()).trim();
+const Signal = (String(color).toLowerCase()).trim();
   let   Action = "INVALID SIGNAL";
 
   if(typeof(Signal) !== "string") return Action;
@@ -37,8 +37,11 @@ export function getTrafficAction(color) {
       Action = "STOP"
       case "flashing red":
       Action = "STOP AND PROCEED WITH CAUTION"
+
+      default: 
+      Action = "INVALID SIGNAL"
        
   }
 
-  return(Signal)
+  return(Action)
 }
