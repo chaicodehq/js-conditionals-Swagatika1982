@@ -34,4 +34,41 @@
  */
 export function calculateParkingFee(hours, vehicleType) {
   // Your code here
+
+  if (typeof hours !== "number" || Number.isNaN(hours) || hours <= 0) return -1;
+
+  // invalid vehicleType
+  if (vehicleType !== "car" && vehicleType !== "motorcycle" && vehicleType !== "bus") return -1;
+
+  // round up partial hours
+  const roundedHours = Math.ceil(hours);
+
+  let firstHourRate = 0;
+  let additionalHourRate = 0;
+  let dailyMax = 0;
+
+  if (vehicleType === "car") {
+    firstHourRate = 5;
+    additionalHourRate = 3;
+    dailyMax = 30;
+  } else if (vehicleType === "motorcycle") {
+    firstHourRate = 3;
+    additionalHourRate = 2;
+    dailyMax = 18;
+  } else if (vehicleType === "bus") {
+    firstHourRate = 10;
+    additionalHourRate = 7;
+    dailyMax = 60;
+  }
+
+  // fee calculation
+  let fee = firstHourRate;
+  if (roundedHours > 1) {
+    fee = firstHourRate + (roundedHours - 1) * additionalHourRate;
+  }
+
+  // cap at daily maximum
+  if (fee > dailyMax) fee = dailyMax;
+
+  return fee;
 }
