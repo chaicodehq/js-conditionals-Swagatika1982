@@ -31,7 +31,8 @@
 export function calculateShipping(weight, country, orderTotal) {
   // Your code here
 
-    if (typeof weight !== "number" || Number.isNaN(weight) || weight <= 0) return -1;
+    
+  if (typeof weight !== "number" || Number.isNaN(weight) || weight <= 0) return -1;
   if (typeof orderTotal !== "number" || Number.isNaN(orderTotal) || orderTotal < 0) return -1;
   if (typeof country !== "string") country = "";
 
@@ -44,15 +45,16 @@ export function calculateShipping(weight, country, orderTotal) {
 
   // Base shipping by weight + destination
   if (isDomestic) {
-    if (weight <= 1)  Shippingcost =  5;
-    if (weight <= 5) Shippingcost = 10;
-    if (weight > 5) Shippingcost = 15;
+    if (weight <= 1) 
+      { Shippingcost =  5;}
+    else if (weight <= 5) {Shippingcost = 10;}
+    else{ Shippingcost = 15;}
     
   } 
   else {
-    if (weight <= 1) Shippingcost = 15;
-    if (weight <= 5) Shippingcost = 25;
-    if (weight > 5) Shippingcost = 40;
+    if (weight <= 1) {Shippingcost = 15;}
+    else if (weight <= 5){ Shippingcost = 25;}
+    else{ Shippingcost = 40;}
     
   }
 
